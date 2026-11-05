@@ -35,7 +35,8 @@
 
                                 <input type="hidden" name="done" value="false">
 
-                                <input type="checkbox" {% if data.done %}checked{% endif %}>
+                                <input type="checkbox" name="done" value="true" {% if data.done %}checked{% endif %}
+                                    onchange="this.form.submit()">
                             </form>
                         </td>
                         <td>{{data.created}}</td>

@@ -1,34 +1,3 @@
-from django.shortcuts import render, redirect
-from to_do_list_app.models import To_Do_List
-from django.shortcuts import get_object_or_404, redirect
-from django.views.decorators.http import require_POST
-
-from to_do_list_app.models import To_Do_List
-
-# Create your views here.
-def home(request):
-    data=To_Do_List.objects.all()
-    return render(request, 'home.html',{'data':data})
-
-
-def add_task(request):
-    if request.method=="POST":
-        title=request.POST.get('title')
-        description=request.POST.get('description')
-
-        if title and description:
-            To_Do_List.objects.create(title=title, description=description)
-            return redirect('home')
-    return render(request, 'add_task.html')   
-
-
-def edit_task(request):
-    return render(request,'edit_task.html')     
-
-
-
-
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 
